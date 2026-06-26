@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signature to Vector — Konversi Tanda Tangan ke SVG</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✍️ Signature to Vector</h1>
+      <p class="subtitle">Konversi gambar tanda tangan ke vektor SVG — rapi, tajam, dan siap pakai di mana saja.</p>
+    </header>
+
+    <main>
+      <!-- Area Upload -->
+      <section class="upload-section" id="uploadSection">
+        <div class="drop-zone" id="dropZone">
+          <div class="drop-zone-content">
+            <svg class="upload-icon" viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p class="drop-text">Seret & lepas gambar tanda tangan di sini</p>
+            <p class="drop-hint">atau</p>
+            <label class="btn btn-primary" for="fileInput">Pilih Gambar</label>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <p class="format-hint">PNG, JPG, JPEG, BMP, WebP — maks 10 MB</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Area Editor (tersembunyi dulu) -->
+      <section class="editor-section" id="editorSection" style="display: none;">
+        <div class="editor-toolbar">
+          <button class="btn btn-outline" id="btnBack">← Upload Ulang</button>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Kualitas Tracing:</span>
+            <input type="range" id="qualitySlider" min="1" max="10" value="6" class="slider">
+            <span id="qualityValue" class="quality-value">6</span>
+          </div>
+          <button class="btn btn-success" id="btnDownloadSVG">⬇ Unduh SVG</button>
+        </div>
+
+        <div class="editor-panels">
+          <!-- Panel Kiri: Gambar Asli -->
+          <div class="panel panel-original">
+            <div class="panel-header">
+              <h3>🖼️ Gambar Asli</h3>
+            </div>
+            <div class="panel-body" id="originalContainer">
+              <img id="originalImage" alt="Gambar asli tanda tangan">
+            </div>
+          </div>
+
+          <!-- Panel Kanan: Hasil Vektor -->
+          <div class="panel panel-vector">
+            <div class="panel-header">
+              <h3>✨ Hasil Vektor (SVG)</h3>
+              <span id="downloadBadge" class="badge" style="display:none;">Siap diunduh!</span>
+            </div>
+            <div class="panel-body" id="vectorContainer">
+              <div id="vectorPreview"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail SVG -->
+        <div class="vector-info" id="vectorInfo" style="display:none;">
+          <div class="info-card">
+            <span class="info-label">Paths:</span>
+            <span id="infoPaths">0</span>
+          </div>
+          <div class="info-card">
+            <span class="info-label">Ukuran SVG:</span>
+            <span id="infoSize">0 KB</span>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btnCopySVG">📋 Salin Kode SVG</button>
+        </div>
+      </section>
+
+      <!-- Petunjuk -->
+      <section class="how-to">
+        <h2>Cara Pakai</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+              <h4>Upload Tanda Tangan</h4>
+              <p>Upload foto atau scan tanda tangan — dari kertas putih, screenshot, atau kamera HP.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+              <h4>Sesuaikan Kualitas</h4>
+              <p>Geser slider untuk atur ketelitian tracing. Semakin tinggi, hasil semakin detil.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+              <h4>Unduh SVG</h4>
+              <p>Klik unduh untuk menyimpan vektor. Langsung pakai di dokumen, PDF, atau website!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🛠️ Dibuat dengan vanilla HTML/CSS/JS • Semua proses dijalankan 100% di browser, tidak ada data dikirim ke server.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
